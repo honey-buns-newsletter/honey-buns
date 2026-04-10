@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Shriya Report — Issue 01</title>
-  <meta name="description" content="A funny, romantic, personal one-month anniversary website for Shriya from Lovish." />
+  <title>The Shriya Report</title>
+  <meta name="description" content="A comforting and funny little website for Shriya from Lovish." />
   <style>
     :root {
       --bg: #fff8fb;
       --bg2: #fff2f7;
-      --card: rgba(255,255,255,0.78);
+      --card: rgba(255,255,255,0.82);
       --text: #241b22;
       --muted: #6b5b65;
       --accent: #ff4d87;
@@ -56,7 +56,7 @@
       color: var(--muted);
       font-size: 0.94rem;
       font-weight: 800;
-      animation: ticker 22s linear infinite;
+      animation: ticker 24s linear infinite;
     }
 
     @keyframes ticker {
@@ -90,17 +90,36 @@
 
     .brand span { color: var(--accent); }
 
-    .nav-links {
+    .tab-row {
       display: flex;
-      gap: 18px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
-    .nav-links a {
+    .tab-btn {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.88);
       color: var(--muted);
-      text-decoration: none;
+      border-radius: 999px;
+      padding: 10px 16px;
       font-size: 0.95rem;
-      font-weight: 700;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: white;
+      border-color: transparent;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
     }
 
     .hero {
@@ -109,7 +128,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 22px;
       align-items: stretch;
     }
@@ -144,23 +163,24 @@
 
     h1 {
       margin: 0 0 16px;
-      font-size: clamp(2.8rem, 7vw, 6rem);
+      font-size: clamp(2.7rem, 7vw, 5.8rem);
       line-height: 0.92;
       letter-spacing: -0.08em;
     }
 
     .hero-copy p {
-      margin: 0 0 24px;
+      margin: 0 0 18px;
       color: var(--muted);
       line-height: 1.85;
-      font-size: 1.08rem;
-      max-width: 650px;
+      font-size: 1.06rem;
+      max-width: 700px;
     }
 
     .cta-row {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
+      margin-top: 10px;
     }
 
     .btn {
@@ -192,81 +212,63 @@
       box-shadow: var(--shadow);
     }
 
-    .hero-visual {
-      padding: 18px;
+    .countdown-card {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       min-height: 100%;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,0.95), transparent 35%),
+        linear-gradient(180deg, rgba(255,255,255,0.93), rgba(255,244,248,0.98));
     }
 
-    .stack {
-      position: relative;
-      min-height: 560px;
-      height: 100%;
-      border-radius: 24px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,246,250,0.98));
-      overflow: hidden;
-      padding: 16px;
+    .countdown-card h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      letter-spacing: -0.06em;
     }
 
-    .sticker {
-      position: absolute;
-      top: 14px;
-      right: 16px;
-      z-index: 3;
+    .countdown-card p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .countdown-box {
       background: white;
-      color: var(--accent);
       border: 1px solid var(--line);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      font-weight: 800;
+      border-radius: 18px;
+      padding: 18px 12px;
+      text-align: center;
       box-shadow: var(--shadow);
     }
 
-    .photo-card {
-        position: absolute;
-        width: 70%;
-        max-width: 330px;
-        background: white;
-        border-radius: 18px;
-        padding: 12px 12px 18px;
-        box-shadow: 0 18px 34px rgba(0,0,0,0.10);
-        transition: transform 0.28s ease, box-shadow 0.28s ease, z-index 0s, top 0.25s ease, left 0.25s ease;
-        cursor: pointer;
-        user-select: none;
+    .countdown-number {
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      font-weight: 900;
+      color: var(--accent);
+      letter-spacing: -0.08em;
+      line-height: 1;
+      margin-bottom: 8px;
     }
 
-
-    .photo-card.active {
-    transform: translateY(-10px) scale(1.03) !important;
-    box-shadow: 0 26px 50px rgba(0,0,0,0.18);
-    }
-
-    .photo-card img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      border-radius: 12px;
-      display: block;
-      background: #f7eef3;
-    }
-
-    .photo-card p {
-      margin: 12px 4px 0;
+    .countdown-label {
+      font-size: 0.9rem;
       color: var(--muted);
-      line-height: 1.55;
-      font-size: 0.95rem;
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    .card-1 { top: 12%; left: 6%; transform: rotate(-8deg); }
-    .card-2 { top: 28%; right: 6%; transform: rotate(7deg); }
-    .card-3 { bottom: 7%; left: 18%; transform: rotate(-3deg); }
-
-    .card-1 { z-index: 3; }
-    .card-2 { z-index: 2; }
-    .card-3 { z-index: 1; }
-
-    section { padding: 24px 0; }
+    section {
+      padding: 24px 0;
+    }
 
     .section-head {
       margin-bottom: 18px;
@@ -312,6 +314,101 @@
       line-height: 1.8;
     }
 
+    .quote-box {
+      background: linear-gradient(180deg, rgba(255,255,255,0.87), rgba(255,245,249,0.98));
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .quote-box .tag {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .quote-box p {
+      margin: 0;
+      line-height: 1.92;
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+    }
+
+    .game-output, .comfort-output {
+      margin-top: 14px;
+      min-height: 110px;
+      background: white;
+      border: 1px dashed rgba(255,77,135,0.26);
+      border-radius: 18px;
+      padding: 18px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 600;
+    }
+
+    .heart-zone {
+      position: relative;
+      min-height: 240px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,245,249,0.98));
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .heart-score {
+      padding: 16px 18px 0;
+      font-weight: 800;
+      color: var(--muted);
+    }
+
+    .heart-play {
+      position: relative;
+      min-height: 190px;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 1.6rem;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.15s ease, opacity 0.3s ease;
+    }
+
+    .heart:hover {
+      transform: scale(1.15);
+    }
+
+    .mini-note {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .pill-btn {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--text);
+      border-radius: 999px;
+      padding: 11px 14px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    .pill-btn:hover {
+      transform: translateY(-1px);
+    }
+
     .stat {
       font-size: 2.55rem;
       line-height: 1;
@@ -348,28 +445,6 @@
       font-size: 1.05rem;
     }
 
-    .quote-box {
-      background: linear-gradient(180deg, rgba(255,255,255,0.87), rgba(255,245,249,0.98));
-      border-radius: 24px;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      padding: 24px;
-    }
-
-    .quote-box .tag {
-      display: inline-block;
-      color: var(--accent);
-      font-size: 0.9rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-
-    .quote-box p {
-      margin: 0;
-      line-height: 1.92;
-      font-size: clamp(1.05rem, 2vw, 1.2rem);
-    }
-
     .battle {
       display: grid;
       gap: 12px;
@@ -384,10 +459,6 @@
       background: rgba(255,255,255,0.72);
       padding: 14px 16px;
       border-radius: 16px;
-    }
-
-    .battle-row strong {
-      font-size: 0.98rem;
     }
 
     .badge {
@@ -457,6 +528,86 @@
       margin-top: 10px;
     }
 
+    .hero-visual {
+      padding: 18px;
+      min-height: 100%;
+    }
+
+    .stack {
+      position: relative;
+      min-height: 560px;
+      height: 100%;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,246,250,0.98));
+      overflow: hidden;
+      padding: 16px;
+    }
+
+    .sticker {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      z-index: 6;
+      background: white;
+      color: var(--accent);
+      border: 1px solid var(--line);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .stack-hint {
+      position: absolute;
+      left: 16px;
+      bottom: 12px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 800;
+      z-index: 6;
+    }
+
+    .photo-card {
+      position: absolute;
+      width: 70%;
+      max-width: 330px;
+      background: white;
+      border-radius: 18px;
+      padding: 12px 12px 18px;
+      box-shadow: 0 18px 34px rgba(0,0,0,0.10);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, z-index 0s;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .photo-card.active {
+      transform: translateY(-10px) scale(1.03) !important;
+      box-shadow: 0 26px 50px rgba(0,0,0,0.18);
+    }
+
+    .photo-card img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      background: #f7eef3;
+    }
+
+    .photo-card p {
+      margin: 12px 4px 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .card-1 { top: 12%; left: 6%; transform: rotate(-8deg); z-index: 3; }
+    .card-2 { top: 28%; right: 6%; transform: rotate(7deg); z-index: 2; }
+    .card-3 { bottom: 7%; left: 18%; transform: rotate(-3deg); z-index: 1; }
+
     .footer {
       padding: 52px 0 72px;
       text-align: center;
@@ -465,573 +616,572 @@
 
     .footer strong { color: var(--text); }
 
-    .heart {
-      display: inline-block;
-      animation: pulse 1.8s infinite;
-    }
-
-    .hidden-message {
-      display: none;
-      margin-top: 16px;
-      background: rgba(255,255,255,0.9);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-      line-height: 1.8;
-    }
-
-    .hidden-message.show { display: block; }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.13); }
-    }
-
     @media (max-width: 980px) {
-      .hero-grid, .grid-2, .grid-3, .note-grid {
+      .hero-grid, .grid-2, .grid-3, .note-grid, .countdown-grid {
         grid-template-columns: 1fr;
       }
 
-      .nav-links { display: none; }
+      .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
       .stack { min-height: 520px; }
     }
 
     @media (max-width: 640px) {
       .container { width: min(94%, var(--max)); }
-      .hero-copy { padding: 24px; }
+      .hero-copy, .countdown-card { padding: 24px; }
       .card, .quote-box, .timeline-item { padding: 18px; }
       .stack { min-height: 460px; }
       .photo-card { width: 78%; }
       .card-1 { top: 7%; left: 3%; }
       .card-2 { top: 30%; right: 3%; }
       .card-3 { bottom: 4%; left: 10%; }
+      .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
 </head>
 <body>
   <div class="ticker-wrap">
     <div class="ticker">
-      BREAKING: Lovish remains down catastrophically for Shriya • Analysts confirm “Honey Buns” usage continues at responsible but meaningful levels • Shriya continues responding to affection like it is deeply non-breaking news • Second date remains sealed by court order •
+      LIVE UPDATE: Lovish misses Shriya very much • Official ruling: bad days are rude and temporary • Countdown to boyfriend return is active • Honey Buns support systems are currently online •
     </div>
   </div>
 
   <nav class="nav">
     <div class="container nav-inner">
       <div class="brand">The <span>Shriya Report</span></div>
-      <div class="nav-links">
-        <a href="#story">Story</a>
-        <a href="#stats">Stats</a>
-        <a href="#lore">Lore</a>
-        <a href="#responses">Responses</a>
-        <a href="#notes">Notes</a>
-        <a href="#letter">Letter</a>
+      <div class="tab-row">
+        <button class="tab-btn active" data-tab="home">Home</button>
+        <button class="tab-btn" data-tab="one-month">One Month</button>
       </div>
     </div>
   </nav>
 
-  <header class="hero container">
-    <div class="hero-grid">
-      <div class="panel hero-copy">
-        <div class="eyebrow">Issue 01 • One month anniversary</div>
-        <h1>
-          Shriya,<br>
-          this escalated<br>
-          beautifully.
-        </h1>
-        <p>
-          We matched on Hinge, had our first date at Hekate Bar, survived a second date
-          that history has agreed not to revisit, and then somehow turned into something
-          that now feels very real, very easy, and very important to me.
-        </p>
-        <p>
-          So this is a little corner of the internet for you — part love letter, part
-          running joke archive, part official record of the fact that I have been saying
-          “I love you” all the time and you have been reacting with “shocker,” “good for you,”
-          “I know,” and occasionally “meh, you're alright” like none of this is remotely new information.
-        </p>
-
-        <div class="cta-row">
-          <a href="#letter" class="btn btn-primary">Read the real part</a>
-          <a href="#story" class="btn btn-secondary">Start at the beginning</a>
-          <button class="btn btn-secondary" id="dramaBtn" type="button">Tap for drama</button>
-        </div>
-
-        <div class="hidden-message" id="dramaMessage">
-          <strong>Official emotional update:</strong>
-          I tried to make this page normal. Then I remembered it is about you, which made that impossible.
-          <div class="tiny-meta">Prepared by Lovish. Fact-checked by overthinking.</div>
-        </div>
-      </div>
-
-      <div class="panel hero-visual">
-        <div class="stack">
-
-          <div class="sticker">boyfriend certified</div>
-
-          <p style="position:absolute; left:16px; bottom:12px; margin:0; color:var(--muted); font-size:0.85rem; font-weight:800;">
-            tap the photos
+  <!-- HOME TAB -->
+  <div class="tab-panel active" id="home">
+    <header class="hero container">
+      <div class="hero-grid">
+        <div class="panel hero-copy">
+          <div class="eyebrow">for today only: emergency boyfriend mode</div>
+          <h1>
+            Shriya,<br>
+            I know today<br>
+            feels awful.
+          </h1>
+          <p>
+            So this is your temporary low-day survival page. No pressure, no fixing-the-world energy,
+            just a soft corner of the internet from me to you until I’m back.
+          </p>
+          <p>
+            In case your brain is being rude today: you are still lovely, still important, still deeply cared for,
+            and still someone I would choose in every mood, every timezone, and every version of the day.
           </p>
 
-          <div class="photo-card card-1">
-            <img src="IMG_7969.JPG" alt="Placeholder photo 1" />
-            <p>Breakfast at the diner close to your place. So yummmmmmmmm</p>
+          <div class="cta-row">
+            <button class="btn btn-primary" id="comfortBtn" type="button">Press if today is annoying</button>
+            <button class="btn btn-secondary" id="goGamesBtn" type="button">Take me to distractions</button>
+            <button class="btn btn-secondary tab-jump" data-target-tab="one-month" type="button">Go to One Month</button>
           </div>
 
-          <div class="photo-card card-2">
-            <img src="IMG_8118.JPG" alt="Placeholder photo 2" />
-            <p>THANK YOU FOR TAKING ME THE MET I LOVED IT HOLY....</p>
-          </div>
-
-          <div class="photo-card card-3">
-            <img src="IMG_8121.JPG" alt="Placeholder photo 3" />
-            <p>Trip to NJ - Chole Bhature + The Rent Heist Revelation</p>
+          <div class="comfort-output" id="comfortOutput">
+            Lovish has prepared emergency emotional support for Shriya...
           </div>
         </div>
-        
-      </div>
-    </div>
-  </header>
 
-  <main class="container">
-    <section id="story">
-      <div class="section-head">
-        <h2>How this started</h2>
-        <p>
-          Some stories begin with grand planning. Ours began with Hinge, then a first date at
-          Hekate Bar, and then a sequence of events that somehow made you one of the safest,
-          sweetest, and best parts of my life.
-        </p>
-      </div>
+        <div class="panel countdown-card">
+          <h2>Countdown until I’m back</h2>
+          <p>
+            I land on <strong>Monday, April 13 at 7:31 PM</strong>. Until then, this page is on active duty.
+          </p>
 
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="dot">📱</div>
-          <div>
-            <h3>Hinge did one useful thing</h3>
+          <div class="countdown-grid">
+            <div class="countdown-box">
+              <div class="countdown-number" id="days">0</div>
+              <div class="countdown-label">days</div>
+            </div>
+            <div class="countdown-box">
+              <div class="countdown-number" id="hours">0</div>
+              <div class="countdown-label">hours</div>
+            </div>
+            <div class="countdown-box">
+              <div class="countdown-number" id="minutes">0</div>
+              <div class="countdown-label">minutes</div>
+            </div>
+            <div class="countdown-box">
+              <div class="countdown-number" id="seconds">0</div>
+              <div class="countdown-label">seconds</div>
+            </div>
+          </div>
+
+          <p class="mini-note" id="countdownMessage">
+            Every second is bringing me closer to you, which is good, because this distance thing is getting old.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="games">
+        <div class="section-head">
+          <h2>Tiny distractions for a rude day</h2>
+          <p>
+            Nothing intense. Just silly little things to tap when the day is being deeply disrespectful.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Emergency comfort button</h3>
             <p>
-              We met on Hinge, which means I am forced to admit that, for once, an app actually
-              improved my life instead of just taking up screen time.
+              Press this whenever everything feels unnecessarily irritating, heavy, dramatic, or just bad.
+            </p>
+            <div class="cta-row">
+              <button class="btn btn-primary" id="comfortBtn2" type="button">Give me one</button>
+            </div>
+            <div class="game-output" id="comfortOutput2">
+              A very caring and slightly dramatic Lovish message will appear here.
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Build-a-better-day</h3>
+            <p>
+              Tap things that should be included in your recovery plan and let the internet agree with you.
+            </p>
+            <div class="pill-row">
+              <button class="pill-btn day-btn" data-item="a hug">a hug</button>
+              <button class="pill-btn day-btn" data-item="good food">good food</button>
+              <button class="pill-btn day-btn" data-item="a nap">a nap</button>
+              <button class="pill-btn day-btn" data-item="boyfriend return">boyfriend return</button>
+              <button class="pill-btn day-btn" data-item="zero responsibilities">zero responsibilities</button>
+            </div>
+            <div class="game-output" id="dayPlanOutput">
+              Current prescription: evaluating how much softness, rest, and affection should be prescribed.
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Mood reset oracle</h3>
+            <p>
+              Press for a very official ruling on your day.
+            </p>
+            <div class="cta-row">
+              <button class="btn btn-primary" id="oracleBtn" type="button">Issue ruling</button>
+            </div>
+            <div class="game-output" id="oracleOutput">
+              Awaiting legal analysis of today’s nonsense...
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <h2>Tap the hearts</h2>
+          <p>
+            This does nothing useful except prove that I am sending you an unreasonable amount of affection from Canada.
+          </p>
+        </div>
+
+        <div class="heart-zone">
+          <div class="heart-score">affection collected: <span id="heartScore">0</span></div>
+          <div class="heart-play" id="heartPlay"></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="grid-2">
+          <div class="quote-box">
+            <span class="tag">for the bad-day version of you</span>
+            <p>
+              You do not need to perform being okay for me. You are allowed to feel off, tired, low, irritated,
+              overwhelmed, and still be completely lovable. A bad day is not a verdict on who you are. It is just a bad day.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Three things I need you to remember</h3>
+            <p>
+              1. Today being bad does not mean you are doing badly.<br><br>
+              2. You are still my safe space, even from far away.<br><br>
+              3. I am still coming back to you, and very soon.
             </p>
           </div>
         </div>
+      </section>
+    </main>
+  </div>
 
-        <div class="timeline-item">
-          <div class="dot">🍸</div>
-          <div>
-            <h3>Hekate Bar</h3>
-            <p>
-              Our first date at Hekate Bar now feels like the beginning of a very good decision.
-              Calm, easy, exciting — the kind of beginning that only gets better once you realize
-              it was actually the start of something real.<br>
-              [Side Note - The bar was actually Vinayak's recommendation]
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="dot">🫣</div>
-          <div>
-            <h3>Second date: redacted</h3>
-            <p>
-              The second date was objectively horrible. We do not speak on it. It has since been sealed,
-              classified, and removed from all serious historical discussion. And somehow, despite that,
-              every other date since has been nothing short of amazing, which honestly feels very us.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="dot">✈️</div>
-          <div>
-            <h3>February 26–28: Chicago</h3>
-            <p>
-              You went to Chicago for your Psychology Conference, and that was one of the first times
-              it really hit me how much I missed you when you weren't around. Not ideal for my emotional
-              composure, but very informative.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="dot">💌</div>
-          <div>
-            <h3>March 1: official launch</h3>
-            <p>
-              On March 1, this became official. Which means one month later, I am here making you
-              a website instead of behaving like a normal person.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="dot">🌍</div>
-          <div>
-            <h3>March 14–21 / March 17–22: Spain and Canada</h3>
-            <p>
-              You were in Spain from March 14 to 21. I was in Canada from March 17 to 22. Different
-              countries, different schedules, same problem: I missed you a ridiculous amount. And somehow
-              the distance did not make things feel uncertain. It made them feel clearer.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="dot">❤️</div>
-          <div>
-            <h3>March 22: you said it first</h3>
-            <p>
-              I had already been saying “I love you” all the time like it was my full-time job,
-              but on March 22, you said it back first - and that moment means more to me than I think
-              I'll ever be casual about.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="stats">
-      <div class="section-head">
-        <h2>Important findings after one month</h2>
-        <p>
-          These observations were gathered carefully, emotionally, and with almost no scientific discipline.
-        </p>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <div class="stat">1</div>
-          <h3>safe space acquired</h3>
+  <!-- ONE MONTH TAB -->
+  <div class="tab-panel" id="one-month">
+    <header class="hero container">
+      <div class="hero-grid">
+        <div class="panel hero-copy">
+          <div class="eyebrow">Issue 01 • One month anniversary</div>
+          <h1>
+            Shriya,<br>
+            this escalated<br>
+            beautifully.
+          </h1>
           <p>
-            I keep telling you that you are my safe space because you are. Being with you feels calm
-            in a way that is rare, and I don’t take that lightly.
+            We matched on Hinge, had our first date at Hekate Bar, survived a second date
+            that history has agreed not to revisit, and then somehow turned into something
+            that now feels very real, very easy, and very important to me.
+          </p>
+          <p>
+            So this is a little corner of the internet for you — part love letter, part
+            running joke archive, part official record of the fact that I have been saying
+            “I love you” all the time and you have been reacting with “shocker,” “good for you,”
+            “I know,” and occasionally “meh, you’re alright” like none of this is remotely new information.
+          </p>
+
+          <div class="cta-row">
+            <a href="#letter" class="btn btn-primary">Read the real part</a>
+            <a href="#story" class="btn btn-secondary">Start at the beginning</a>
+          </div>
+        </div>
+
+        <div class="panel hero-visual">
+          <div class="stack">
+            <div class="sticker">boyfriend certified</div>
+            <p class="stack-hint">tap the photos :)</p>
+
+            <div class="photo-card card-1">
+              <img src="IMG_7969.JPG" alt="Photo 1" />
+              <p>Breakfast at the diner close to your place. So yummmmmmmmm</p>
+            </div>
+
+            <div class="photo-card card-2">
+              <img src="IMG_8118.JPG" alt="Photo 2" />
+              <p>THANK YOU FOR TAKING ME THE MET I LOVED IT HOLY....</p>
+            </div>
+
+            <div class="photo-card card-3">
+              <img src="IMG_8121.JPG" alt="Photo 3" />
+              <p>Trip to NJ - Chole Bhature + The Grand Heist Mystery Revelation</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="story">
+        <div class="section-head">
+          <h2>How this started</h2>
+          <p>
+            Some stories begin with grand planning. Ours began with Hinge, then a first date at
+            Hekate Bar, and then a sequence of events that somehow made you one of the safest,
+            sweetest, and best parts of my life.
           </p>
         </div>
 
-        <div class="card">
-          <div class="stat">22 Mar</div>
-          <h3>critical emotional event</h3>
-          <p>
-            The day you said “I love you” first. Markets shifted. My heart did a small backflip.
-          </p>
-        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="dot">📱</div>
+            <div>
+              <h3>Hinge did one useful thing</h3>
+              <p>
+                We met on Hinge, which means I am forced to admit that, for once, an app actually
+                improved my life instead of just taking up screen time.
+              </p>
+            </div>
+          </div>
 
-        <div class="card">
-          <div class="stat">2</div>
-          <h3>trips, same conclusion</h3>
-          <p>
-            Chicago, then Spain and Canada. Apparently all temporary distance does is make me miss you
-            faster and more aggressively.
-          </p>
-        </div>
-      </div>
-    </section>
+          <div class="timeline-item">
+            <div class="dot">🍸</div>
+            <div>
+              <h3>Hekate Bar</h3>
+              <p>
+                Our first date at Hekate Bar now feels like the beginning of a very good decision.
+                Calm, easy, exciting — the kind of beginning that only gets better once you realize
+                it was actually the start of something real.
+              </p>
+            </div>
+          </div>
 
-    <section>
-      <div class="grid-2">
-        <div class="quote-box">
-          <span class="tag">a thing I mean</span>
-          <p>
-            You are more emotionally mature than me, which has helped me more than I think I even know how to explain yet.
-            I’ve learned so much from you already - about patience, honesty, softness, and how to slow down and actually
-            feel what matters.
-          </p>
-        </div>
+          <div class="timeline-item">
+            <div class="dot">🫣</div>
+            <div>
+              <h3>Second date: redacted</h3>
+              <p>
+                The second date was objectively horrible. We do not speak on it. It has since been sealed,
+                classified, and removed from all serious historical discussion. And somehow, despite that,
+                every other date since has been nothing short of amazing, which honestly feels very us.
+              </p>
+            </div>
+          </div>
 
-        <div class="card">
-          <h3>Shriya, benevolent food dictator</h3>
-          <p>
-            You are absurdly good at picking restaurants and deciding what we should order. At this point,
-            I have accepted that when menus arrive, I am basically just there for moral support while you
-            make better decisions than me with the confidence of someone who already knows I will admit you were right.
-          </p>
-        </div>
-      </div>
-    </section>
+          <div class="timeline-item">
+            <div class="dot">✈️</div>
+            <div>
+              <h3>February 26–28: Chicago</h3>
+              <p>
+                You went to Chicago for your Psychology Conference, and that was one of the first times
+                it really hit me how much I missed you when you weren't around. Not ideal for my emotional
+                composure, but very informative.
+              </p>
+            </div>
+          </div>
 
-    <section id="lore">
-      <div class="section-head">
-        <h2>Relationship lore</h2>
-        <p>
-          The small specific things that make this feel like us instead of some generic love story.
-        </p>
-      </div>
+          <div class="timeline-item">
+            <div class="dot">💌</div>
+            <div>
+              <h3>March 1: official launch</h3>
+              <p>
+                On March 1, this became official. Which means one month later, I am here making you
+                a website instead of behaving like a normal person.
+              </p>
+            </div>
+          </div>
 
-      <div class="grid-2">
-        <div class="card">
-          <h3>Chicago, Spain, Canada, and the growing problem of missing you</h3>
-          <p>
-            When you went to Chicago from February 26 to 28 for your Psychology Conference, it was one of the
-            first times I really felt how much I missed you when you weren't around. Then later you were in Spain
-            from March 14 to 21, and I was in Canada from March 17 to 22. Different countries, different schedules,
-            same problem: I missed you a ridiculous amount. And weirdly, the distance did not make things feel
-            uncertain. It made them feel clearer.
-          </p>
-        </div>
+          <div class="timeline-item">
+            <div class="dot">🌍</div>
+            <div>
+              <h3>March 14–21 / March 17–22: Spain and Canada</h3>
+              <p>
+                You were in Spain from March 14 to 21. I was in Canada from March 17 to 22. Different
+                countries, different schedules, same problem: I missed you a ridiculous amount. And somehow
+                the distance did not make things feel uncertain. It made them feel clearer.
+              </p>
+            </div>
+          </div>
 
-        <div class="card">
-          <h3>The two turtles, which I loved an unreasonable amount</h3>
-          <p>
-            You brought me back so many gifts, and one of my favorites was the little showpiece of the two turtles together.
-            I loved that. Turtles are often associated with longevity, protection, and long-lasting bonds in different traditions,
-            so whether you meant all of that or just knew I'd love it, it landed perfectly. Thoughtful, sweet, and exactly the
-            kind of thing that stays with me because it came from you.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>The pasta that ended the debate for me</h3>
-          <p>
-            When I got back from my trip on Sunday, I was exhausted. Then you made me pasta. Amazing pasta, by the way.
-            And there was something about sitting there, tired and fed and taken care of by you, that hit me so clearly:
-            this is the kind of love I want. This is the kind of person I want. This is the one.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Khairiyat</h3>
-          <p>
-            I already told you I associate you with Khairiyat, so this is not new information. But it belongs here anyway.
-            Some people become attached to a song. You somehow became the feeling of one.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-head">
-        <h2>Things we do not debate</h2>
-        <p>
-          There are some truths in this relationship that have become too obvious to argue with.
-        </p>
-      </div>
-
-      <div class="card battle">
-        <div class="battle-row">
-          <strong>Pool</strong>
-          <span class="badge">Winner: Shriya</span>
-        </div>
-        <div class="tiny-meta">Your dominance at pool has been noted, resented, and formally documented.</div>
-
-        <div class="battle-row">
-          <strong>Table tennis</strong>
-          <span class="badge">Winner: Lovish</span>
-        </div>
-        <div class="battle-row">
-          <strong>Choosing restaurants</strong>
-          <span class="badge">Winner: Shriya, annoyingly</span>
-        </div>
-        <div class="battle-row">
-          <strong>Choosing what we order</strong>
-          <span class="badge">Winner: also Shriya</span>
-        </div>
-        <div class="battle-row">
-          <strong>Pretending my affection is not breaking news</strong>
-          <span class="badge">Winner: Shriya</span>
-        </div>
-        <div class="battle-row">
-          <strong>Being your biggest fan</strong>
-          <span class="badge">Winner: Lovish</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="responses">
-      <div class="section-head">
-        <h2>The Shriya response generator</h2>
-      </div>
-
-      <div class="card">
-        <h3>Generate a classic Shriya response</h3>
-        <div class="cta-row" style="margin-top:14px;">
-          <button class="btn btn-primary" id="shockerBtn" type="button">Generate moment</button>
-        </div>
-        <div class="output" id="shockerOutput">
-          Lovish is preparing an emotionally sincere statement...
-        </div>
-      </div>
-    </section>
-
-    <section id="notes">
-      <div class="section-head">
-        <h2>Tap these when you miss me or want proof I notice things</h2>
-        <p>
-          These are meant to feel like tiny folded notes left in your pocket.
-        </p>
-      </div>
-
-      <div class="note-grid">
-        <div class="note" tabindex="0">
-          <div class="front">You feel like peace</div>
-          <div class="hint">tap to open</div>
-          <div class="back">
-            I call you my safe space all the time because it is the truest way I know to say it.
-            Being close to you makes me feel calmer, steadier, and more myself.
+          <div class="timeline-item">
+            <div class="dot">❤️</div>
+            <div>
+              <h3>March 22: you said it first</h3>
+              <p>
+                I had already been saying “I love you” all the time like it was my full-time job,
+                but on March 22, you said it back first — and that moment means more to me than I think
+                I’ll ever be casual about.
+              </p>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div class="note" tabindex="0">
-          <div class="front">You teach me things without trying to</div>
-          <div class="hint">tap to open</div>
-          <div class="back">
-            You are more emotionally mature than me, and instead of making me feel small,
-            you make me want to grow. That is such a rare gift.
-          </div>
+      <section>
+        <div class="section-head">
+          <h2>The part I really mean</h2>
+          <p>
+            This is the center of the page. No performance here. Just me being honest with you.
+          </p>
         </div>
 
-        <div class="note" tabindex="0">
-          <div class="front">You take care of people beautifully</div>
-          <div class="hint">tap to open</div>
-          <div class="back">
-            The gifts from Spain. The turtle showpiece. The pasta when I got back tired.
-            The way you think about comfort. I notice all of it.
-          </div>
+        <div class="quote-box" id="letter">
+          <span class="tag">for Shriya</span>
+          <p>
+            Shriya,<br><br>
+            I’ve been trying to find the right way to say all of this without making it feel too polished,
+            because the truth is I don’t want this to sound polished. I want it to sound like me. And the most
+            honest version is this: I feel incredibly lucky that it’s you.<br><br>
+
+            From Hinge, to Hekate Bar, to March 1, to everything that came after, being with you has felt like
+            something that somehow became important to me very quickly and very naturally. Nothing about you feels forced.
+            Not the conversations, not the comfort, not the laughter, not even the missing you. Somehow, even that feels
+            honest with you.<br><br>
+
+            Even the distance made things clearer. When you were in Chicago from February 26 to 28, I missed you in that
+            quiet way that tells you something is already becoming important. Then when you were in Spain from March 14 to 21
+            and I was in Canada from March 17 to 22, it felt even more obvious. Different places, different days, same feeling:
+            I missed you deeply, and all that distance really did was make me more sure of how much you matter to me.<br><br>
+
+            I say “I love you” all the time, so this won’t shock you. But I still want to say it properly:
+            I love you not just in the big dramatic way, but in the quiet way too. In the way where your presence settles me.
+            In the way where I trust you. In the way where I feel safe with you. In the way where I come back tired from a trip,
+            eat pasta you made, and suddenly feel something in my chest go very still and very sure.<br><br>
+
+            You are my safe space. You really are. And the more time I spend with you, the more I realize how rare that is.
+            You have this emotional steadiness that I admire so much. You’re more mature than me in ways that have already
+            taught me a lot, and I mean that with so much respect. You make me want to show up better. Softer. More honestly.<br><br>
+
+            I love the little things too. The way you pick restaurants like you were born for it. The way you somehow always
+            know what we should order. The way you beat me at pool and carry yourself like this is a normal amount of power
+            for one person to have. The way you brought me back gifts from Spain. The little two turtles together. The thought
+            behind that. The feeling of something lasting in it. The heart behind that. All of it stays with me.<br><br>
+
+            Happy one month, Shriya.<br><br>
+            With all my love,<br>
+            Lovish
+          </p>
         </div>
-
-        <div class="note" tabindex="0">
-          <div class="front">You are annoyingly good at food</div>
-          <div class="hint">tap to open</div>
-          <div class="back">
-            I would like the record to show that your taste in restaurants and orders is elite.
-            I don’t enjoy how often you’re right, but I do benefit from it.
-          </div>
-        </div>
-
-        <div class="note" tabindex="0">
-          <div class="front">Missing you proved something</div>
-          <div class="hint">tap to open</div>
-          <div class="back">
-            Spain and Canada were very far apart, but somehow the clearest part of that week
-            was how much I missed you. That told me a lot.
-          </div>
-        </div>
-
-        <div class="note" tabindex="0">
-          <div class="front">Your special talent for messing with me</div>
-          <div class="hint">tap to open</div>
-          <div class="back">
-            You have somehow developed a full response catalog for when I say I love you:
-            “shocker,” “good for you,” “I know,” and “meh, you're alright.” It should annoy me more
-            than it does. Instead I find it ridiculously endearing.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="letter">
-      <div class="section-head">
-        <h2>The part I really mean</h2>
-        <p>
-          This is the center of the page. No performance here. Just me being honest with you.
-        </p>
-      </div>
-
-      <div class="quote-box">
-        <span class="tag">for Shriya</span>
-        <p>
-          Shriya,<br><br>
-
-          I’ve been trying to find the right way to say all of this without making it feel too polished,
-          because the truth is I don’t want this to sound polished. I want it to sound like me. And the most
-          honest version is this: I feel incredibly lucky that it’s you.<br><br>
-
-          From Hinge, to Hekate Bar, to March 1, to everything that came after, being with you has felt like
-          something that somehow became important to me very quickly and very naturally. Nothing about you feels forced.
-          Not the conversations, not the comfort, not the laughter, not even the missing you. Somehow, even that feels
-          honest with you.<br><br>
-
-          Even the distance made things clearer. When you were in Chicago from February 26 to 28, I missed you in that
-          quiet way that tells you something is already becoming important. Then when you were in Spain from March 14 to 21
-          and I was in Canada from March 17 to 22, it felt even more obvious. Different places, different days, same feeling:
-          I missed you deeply, and all that distance really did was make me more sure of how much you matter to me.<br><br>
-
-          I say “I love you” all the time, so this won’t shock you. In fact, you’ll probably read this and smile like
-          I’ve simply confirmed information you already had. But I still want to say it properly: I love you not just
-          in the big dramatic way, but in the quiet way too. In the way where your presence settles me. In the way where
-          I trust you. In the way where I feel safe with you. In the way where I come back tired from a trip, eat pasta
-          you made, and suddenly feel something in my chest go very still and very sure.<br><br>
-
-          You are my safe space. You really are. And the more time I spend with you, the more I realize how rare that is.
-          You have this emotional steadiness that I admire so much. You’re more mature than me in ways that have already
-          taught me a lot, and I mean that with so much respect. You make me want to show up better. Softer. More honestly.<br><br>
-
-          I love the little things too. The way you pick restaurants like you were born for it. The way you somehow always
-          know what we should order. The way you beat me at pool (both, game bar and imessage) and carry yourself like this is a normal amount of power
-          for one person to have. The way you brought me back gifts from Spain. The little two turtles together. The thought
-          behind that. The feeling of something lasting in it. The heart behind that. All of it stays with me.<br><br>
-
-          And even though our second date was a complete disaster that should never be mentioned in serious historical records,
-          every date since then has been nothing short of amazing. Which feels right, because that’s what being with you has
-          started to feel like to me: easy, alive, meaningful, and a little unreal in the best way.<br><br>
-
-          Thank you for being someone I can love this openly. Thank you for
-          making room for me in your life the way you have. Thank you for being you.<br><br>
-
-          Happy one month, Shriya.<br><br>
-
-          With all my love,<br>
-          Lovish
-        </p>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-head">
-        <h2>Future issues</h2>
-        <p>
-          I will keep updating this website LMAO
-        </p>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Birthday edition</h3>
-          <p>coming soon</p>
-        </div>
-        <div class="card">
-          <h3>Six-month edition</h3>
-          <p>coming soon</p>
-        </div>
-        <div class="card">
-          <h3>One-year edition</h3>
-          <p>coming soon</p>
-        </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
+  </div>
 
   <footer class="footer container">
-    Made with <span class="heart">♥</span> by <strong>Lovish</strong> for <strong>Shriya</strong><br>
-    <small>The Shriya Report • One month anniversary issue</small>
+    Made with ♥ by <strong>Lovish</strong> for <strong>Shriya</strong><br>
+    <small>The Shriya Report</small>
   </footer>
 
   <script>
-    const dramaBtn = document.getElementById("dramaBtn");
-    const dramaMessage = document.getElementById("dramaMessage");
+    // Tabs
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const tabPanels = document.querySelectorAll(".tab-panel");
+    const tabJumpButtons = document.querySelectorAll(".tab-jump");
 
-    dramaBtn.addEventListener("click", () => {
-      dramaMessage.classList.toggle("show");
+    function openTab(tabId) {
+      tabButtons.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.tab === tabId);
+      });
+      tabPanels.forEach(panel => {
+        panel.classList.toggle("active", panel.id === tabId);
+      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener("click", () => openTab(btn.dataset.tab));
     });
 
-    const shockerLines = [
-      'Lovish: “I love you.”<br><br>Shriya: “Shocker.”<br><br>She continues to behave as though this information was filed weeks ago.',
-      'Lovish: “You’re my safe space.”<br><br>Shriya: “Good for you.”<br><br>Emotionally supportive. Spiritually a menace.',
-      'Lovish: “I missed you so much.”<br><br>Shriya: “I know.”<br><br>Unbelievable confidence. Unfortunately deserved.',
-      'Lovish: “You mean so much to me.”<br><br>Shriya: “Meh, you’re alright.”<br><br>Absolutely disrespectful. Deeply adorable.',
-      'Lovish: “I made you an entire website.”<br><br>Shriya: “Shocker.”<br><br>Fair enough, honestly.',
-      'Lovish: “I associate you with Khairiyat.”<br><br>Shriya: “I know.”<br><br>This relationship remains deeply sincere and mildly unserious.',
-      'Lovish: “I love you more every day.”<br><br>Shriya: “Good for you.”<br><br>A cruel response from a beautiful person.'
+    tabJumpButtons.forEach(btn => {
+      btn.addEventListener("click", () => openTab(btn.dataset.targetTab));
+    });
+
+    // Countdown
+    const targetDate = new Date("2026-04-13T19:31:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      const daysEl = document.getElementById("days");
+      const hoursEl = document.getElementById("hours");
+      const minutesEl = document.getElementById("minutes");
+      const secondsEl = document.getElementById("seconds");
+      const msgEl = document.getElementById("countdownMessage");
+
+      if (diff <= 0) {
+        daysEl.textContent = "0";
+        hoursEl.textContent = "0";
+        minutesEl.textContent = "0";
+        secondsEl.textContent = "0";
+        msgEl.textContent = "I’m back now. Finally. This countdown has completed its mission.";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      daysEl.textContent = days;
+      hoursEl.textContent = hours;
+      minutesEl.textContent = minutes;
+      secondsEl.textContent = seconds;
+
+      if (days >= 1) {
+        msgEl.textContent = "This is temporary. I’m getting closer to you every hour.";
+      } else {
+        msgEl.textContent = "We are officially in the final stretch. Very strong work from us.";
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Comfort messages
+    const comfortLines = [
+      "Okay. Breathe. One bad day is not allowed to talk to you like this.",
+      "Today may be rude, but it still does not get to rewrite who you are.",
+      "You are allowed to feel low and still be deeply loved.",
+      "I know things feel like shit right now. I’m still with you through it.",
+      "Official ruling: today is wrong about you.",
+      "You do not need to win the day. You just need to get through it gently.",
+      "I wish I could teleport in, annoy you affectionately, and fix the mood at least 14%.",
+      "Please remember that a tired brain is a liar with strong opinions."
     ];
 
-    const shockerBtn = document.getElementById("shockerBtn");
-    const shockerOutput = document.getElementById("shockerOutput");
+    function randomFrom(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
 
-    shockerBtn.addEventListener("click", () => {
-      const randomLine = shockerLines[Math.floor(Math.random() * shockerLines.length)];
-      shockerOutput.innerHTML = randomLine;
+    const comfortOutput = document.getElementById("comfortOutput");
+    const comfortOutput2 = document.getElementById("comfortOutput2");
+    const comfortBtn = document.getElementById("comfortBtn");
+    const comfortBtn2 = document.getElementById("comfortBtn2");
+
+    function showComfort() {
+      const line = randomFrom(comfortLines);
+      comfortOutput.innerHTML = line;
+      comfortOutput2.innerHTML = line;
+    }
+
+    comfortBtn.addEventListener("click", showComfort);
+    comfortBtn2.addEventListener("click", showComfort);
+
+    // Scroll to games
+    document.getElementById("goGamesBtn").addEventListener("click", () => {
+      document.getElementById("games").scrollIntoView({ behavior: "smooth" });
     });
 
+    // Build-a-better-day
+    const dayButtons = document.querySelectorAll(".day-btn");
+    const dayPlanOutput = document.getElementById("dayPlanOutput");
+    let chosenItems = [];
+
+    dayButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const item = btn.dataset.item;
+        if (!chosenItems.includes(item)) {
+          chosenItems.push(item);
+        }
+        dayPlanOutput.innerHTML =
+          "Approved recovery plan: " +
+          chosenItems.join(", ") +
+          ".<br><br>Medical opinion: this treatment plan is excellent and should be taken very seriously.";
+      });
+    });
+
+    // Oracle
+    const oracleLines = [
+      "Official ruling: today is being incredibly dramatic and should calm down.",
+      "Prescription: one nap, one good meal, two hugs, immediate boyfriend return.",
+      "Diagnosis: emotionally overloaded angel.",
+      "Court finding: Shriya deserves softness, not nonsense.",
+      "Breaking development: the day is wrong, and you remain lovely.",
+      "Medical note: patient requires rest, comfort, and someone telling her she is doing enough."
+    ];
+
+    const oracleBtn = document.getElementById("oracleBtn");
+    const oracleOutput = document.getElementById("oracleOutput");
+
+    oracleBtn.addEventListener("click", () => {
+      oracleOutput.innerHTML = randomFrom(oracleLines);
+    });
+
+    // Hearts game
+    const heartPlay = document.getElementById("heartPlay");
+    const heartScore = document.getElementById("heartScore");
+    let affectionCount = 0;
+
+    function spawnHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "♥";
+      heart.style.left = Math.random() * 88 + "%";
+      heart.style.top = Math.random() * 75 + "%";
+
+      heart.addEventListener("click", () => {
+        affectionCount += 1;
+        heartScore.textContent = affectionCount;
+        heart.style.opacity = "0";
+        setTimeout(() => heart.remove(), 250);
+        spawnHeart();
+      });
+
+      heartPlay.appendChild(heart);
+    }
+
+    for (let i = 0; i < 10; i++) {
+      spawnHeart();
+    }
+
+    // Notes toggle
     const notes = document.querySelectorAll(".note");
     notes.forEach(note => {
       note.addEventListener("click", () => {
@@ -1046,37 +1196,37 @@
       });
     });
 
+    // Photo shuffle
     const photoCards = document.querySelectorAll(".photo-card");
+    let stackOrder = [3, 2, 1];
 
-let stackOrder = [3, 2, 1];
-
-function applyStackOrder() {
-  photoCards.forEach((card, index) => {
-    card.style.zIndex = stackOrder[index];
-    card.classList.remove("active");
-  });
-}
-
-applyStackOrder();
-
-photoCards.forEach((card, clickedIndex) => {
-  card.addEventListener("click", () => {
-    const clickedZ = stackOrder[clickedIndex];
-
-    stackOrder = stackOrder.map(z => {
-      if (z < clickedZ) return z + 1;
-      if (z === clickedZ) return 1;
-      return z;
-    });
+    function applyStackOrder() {
+      photoCards.forEach((card, index) => {
+        card.style.zIndex = stackOrder[index];
+        card.classList.remove("active");
+      });
+    }
 
     applyStackOrder();
-    card.classList.add("active");
 
-    setTimeout(() => {
-      card.classList.remove("active");
-    }, 260);
-  });
-});
+    photoCards.forEach((card, clickedIndex) => {
+      card.addEventListener("click", () => {
+        const clickedZ = stackOrder[clickedIndex];
+
+        stackOrder = stackOrder.map(z => {
+          if (z < clickedZ) return z + 1;
+          if (z === clickedZ) return 1;
+          return z;
+        });
+
+        applyStackOrder();
+        card.classList.add("active");
+
+        setTimeout(() => {
+          card.classList.remove("active");
+        }, 260);
+      });
+    });
   </script>
 </body>
 </html>
