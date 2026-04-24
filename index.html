@@ -103,6 +103,84 @@
       font-weight: 700;
     }
 
+    .coming-soon {
+      padding: 18px 0 4px;
+    }
+
+    .coming-soon-card {
+      border-radius: 22px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .coming-soon-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 8% 50%, rgba(255,77,135,0.13), transparent 28%);
+      pointer-events: none;
+    }
+
+    .coming-soon-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .coming-soon-kicker {
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .coming-soon-copy h2 {
+      margin: 0;
+      font-size: clamp(1.15rem, 2vw, 1.55rem);
+      letter-spacing: -0.04em;
+    }
+
+    .coming-soon-copy p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .release-pill {
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      padding: 12px 15px;
+      font-weight: 900;
+      font-size: 0.92rem;
+      box-shadow: 0 12px 26px rgba(255,77,135,0.24);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 720px) {
+      .coming-soon-card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .release-pill {
+        white-space: normal;
+      }
+    }
+
     .hero {
       padding: 54px 0 28px;
     }
@@ -530,6 +608,24 @@
       </div>
     </div>
   </nav>
+
+  <section class="coming-soon container" aria-label="Coming soon birthday edition">
+    <div class="coming-soon-card">
+      <div class="coming-soon-copy">
+        <div class="coming-soon-kicker">Under works</div>
+        <h2>Birthday Edition is officially loading.</h2>
+        <p>
+          Shriya's family and California are trying to steal her birthday week from me, and apparently it is also trying
+          to steal some weeks after. I am being brave about this. 
+          Barely.
+        </p>
+      </div>
+  
+      <div class="release-pill">
+        Unlocks May 16 · 12:00 AM
+      </div>
+    </div>
+  </section>
 
   <header class="hero container">
     <div class="hero-grid">
